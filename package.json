@@ -1,7 +1,7 @@
 {
-  "name": "a3-boilerplate",
-  "version": "3.0.0-alpha.1",
-  "description": "Apostrophe 3 Boilerplate Site",
+  "name": "tartine",
+  "version": "0.0.1",
+  "description": "Tartine App",
   "main": "app.js",
   "scripts": {
     "start": "node app",
@@ -16,8 +16,12 @@
   "author": "Apostrophe Technologies, Inc.",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "alpha",
+    "@tailwindcss/typography": "^0.3.1",
+    "apostrophe": "^3.0.0-alpha.2",
+    "dotenv": "^6.2.0",
     "normalize.css": "^8.0.1",
+    "postcss": "^8.1.9",
+    "tailwindcss": "^2.0.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
@@ -55,6 +59,7 @@
     "eslint-plugin-node": "^11.1.0",
     "node-dev": "^5.2.0",
     "nodemon": "^2.0.4",
+    "postcss-loader": "^4.0.3",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.5",
     "style-loader": "^1.2.1"

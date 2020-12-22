@@ -1,7 +1,7 @@
 const path = require('path');
 
 require('apostrophe')({
-  shortName: 'a3-boilerplate',
+  shortName: 'tastine',
 
   modules: {
 
@@ -23,21 +23,9 @@ require('apostrophe')({
     },
 
     // Custom CSS classes for standard apostrophe widgets
-    '@apostrophecms/rich-text-widget': {
-      options: {
-        className: 'bp-rich-text'
-      }
-    },
-    '@apostrophecms/image-widget': {
-      options: {
-        className: 'bp-image-widget'
-      }
-    },
-    '@apostrophecms/video-widget': {
-      options: {
-        className: 'bp-video-widget'
-      }
-    },
+    '@apostrophecms/rich-text-widget': {},
+    '@apostrophecms/image-widget': {},
+    '@apostrophecms/video-widget': {},
     // Manages apostrophe's overall asset pipeline
     '@apostrophecms/asset': {
       // When not in production, refresh the page on restart
@@ -50,14 +38,17 @@ require('apostrophe')({
       options: {
         session: {
           // If this still says `undefined`, set a real secret!
-          secret: undefined
+          secret: 'Contrast-Image-Thus-Original-2016'
         }
       }
     },
 
     // A home for our own project-specific javascript and SASS assets
     asset: {},
-    'default-page': {}
+    'default-page': {},
 
+    // My Pieces
+    ingredient: {},
+    recipe: {}
   }
 });

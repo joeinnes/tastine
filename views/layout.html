@@ -14,18 +14,17 @@
     This block outputs its contents in the HTML document's <head>.
     It is a good place to put extra <script> <link> and <meta> tags.
   #}
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap&text=TASTINE" rel="stylesheet"> 
 {% endblock %}
 
 {% block beforeMain %}
-<div class="bp-wrapper">
-  <header class="bp-header">
-    <img class="bp-header__logo" src="/images/logo.png" alt="ApostropheCMS logo">
-    <nav class="bp-nav"></nav>
-    {% if not data.user %}
-      <a class="bp-button bp-header__login" href="/login">Login</a>
-    {% endif %}
+<div class="bg-white text-grey-700 min-h-screen flex flex-col justify-between">
+  <header class="bg-brand px-8 py-2 flex justify-between">
+    <h1 class="font-logo text-white text-2xl capitalize">TASTINE</h1>
+    <a class="bg-white hover:bg-dc2 transition transition-colors duration-500 px-2 border border-white rounded flex items-center">Log in</a>
   </header>
-  <main class="bp-main">
+  <main class="px-8 py-2 flex-grow">
 {% endblock %}
 
 {% block main %}
@@ -38,15 +37,8 @@
 
 {% block afterMain %}
   </main>
-  <footer class="bp-footer">
-    <h3>Essential Links</h3>
-    <ul class="bp-footer__links">
-      <li><a href="https://apostrophecms.com/" target="_blank">About ApostropheCMS</a></li>
-      <li><a href="https://chat.apostrophecms.com/" target="_blank">Discord</a></li>
-      <li><a href="https://github.com/apostrophecms/apostrophe/tree/3.0" target="_blank">Github (3.0 branch)</a></li>
-      <li><a href="https://twitter.com/apostrophecms" target="_blank">Twitter</a></li>
-      <li><a href="https://forum.apostrophecms.org" target="_blank">Forum</a></li>
-    </ul>
+  <footer class="bg-grey-700 text-white px-8 py-2">
+  Footer
   </footer>
 </div>{# Close .bp-wrapper #}
 {% endblock %}

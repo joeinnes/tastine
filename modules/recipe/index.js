@@ -31,7 +31,10 @@ module.exports = {
                 'link',
                 '|',
                 'bullet_list',
-                'ordered_list'
+                'ordered_list',
+                '|',
+                'undo',
+                'redo'
               ]
             }
           }
@@ -61,7 +64,7 @@ module.exports = {
     group: {
       details: {
         label: 'Recipe Details',
-        fields: [ 'title', 'ingredients' ]
+        fields: [ 'title', '_featuredPhoto', 'method', 'ingredients' ]
       }
     }
   }

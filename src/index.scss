@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Atkinson Hyperlegible'; 
+  src: url('/public/fonts/Atkinson-Hyperlegible-Regular-102.eot'); /* IE9 Compat Modes */
+  src: url('/public/fonts/Atkinson-Hyperlegible-Regular-102.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/public/fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/public/fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/public/fonts/Atkinson-Hyperlegible-Regular-102.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/public/fonts/Atkinson-Hyperlegible-Regular-102.svg#AtkinsonHyperlegible-Regular') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Bold';
+  src: url('/public/fonts/Atkinson-Hyperlegible-Bold-102.eot'); /* IE9 Compat Modes */
+  src: url('/public/fonts/Atkinson-Hyperlegible-Bold-102.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/public/fonts/Atkinson-Hyperlegible-Bold-102a.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/public/fonts/Atkinson-Hyperlegible-Bold-102.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/public/fonts/Atkinson-Hyperlegible-Bold-102.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/public/fonts/Atkinson-Hyperlegible-Bold-102.svg#AtkinsonHyperlegible-Bold') format('svg'); /* Legacy iOS */
+}
+
+body {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+} 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Atkinson Hyperlegible Bold', sans-serif;
+} 
+
 .font-logo {
   font-family: 'Megrim', sans-serif;
+}
+
+input[type=checkbox]:checked + span.ingredient-item {
+  text-decoration: line-through;
 }

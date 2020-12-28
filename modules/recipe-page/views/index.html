@@ -1,0 +1,35 @@
+{% import '@apostrophecms/pager:macros.html' as pager with context %}
+{% extends "layout.html" %}
+
+<!-- fields: [ 'title', '_featuredPhoto', 'method', 'ingredients' ] -->
+
+{% block main %}
+<div class="grid grid-cols-3 gap-4 px-4">
+  {% for recipe in data.pieces %}
+  <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
+   {% set attachment = apos
+      .image
+      .first(recipe._featuredPhoto) %}
+
+  <div class="w-1/2 bg-cover h-full rounded-l-lg bg-center" style="background-image: url('{{ apos.attachment.url(attachment, { size: data.options.size or 'full' }) }}')"></div>
+  <div class="w-1/2 p-4 pt-2">
+    <h2 class="text-3xl mb-2"><a href="{{ recipe._url }}">{{ recipe.title }}</a></h4>
+    <h3 class="text-xl mb-2">Ingredients</h3>
+    <ul>
+    {% for ingredient in recipe.ingredients %}
+      <li>{{ingredient.quantity}} {{ingredient._ingredient[0].quantityUnit | lower}} of {{ingredient._ingredient[0].title | lower}}</li>
+    {% endfor %}
+    </ul>
+    <h3 class="text-xl my-2">Method</h3>
+    <section>{% area recipe, 'method' %}</section>
+    {% for ingredient in recipe.ingredients %}
+      <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}" name="name" value="{{ingredient._ingredient[0].title}}">
+      <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}"  name="quantity" value="{{ingredient.quantity}}" />
+    {% endfor %}
+    <button class="p-2 mt-2 rounded bg-brand text-white add-ingredients-to-shopping-list" data-recipe="{{recipe._id}}">Add to shopping list</button>
+    </div>
+    </article>
+  {% endfor %}
+  </div>
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}

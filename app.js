@@ -49,6 +49,7 @@ require('apostrophe')({
 
     // My Pieces
     ingredient: {},
-    recipe: {}
+    recipe: {},
+    'recipe-page': {}
   }
 });

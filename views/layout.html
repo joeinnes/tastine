@@ -14,31 +14,67 @@
     This block outputs its contents in the HTML document's <head>.
     It is a good place to put extra <script> <link> and <meta> tags.
   #}
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap&text=TASTINE" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap&text=TASTINE" rel="stylesheet">
 {% endblock %}
 
 {% block beforeMain %}
-<div class="bg-white text-grey-700 min-h-screen flex flex-col justify-between">
-  <header class="bg-brand px-8 py-2 flex justify-between">
-    <h1 class="font-logo text-white text-2xl capitalize">TASTINE</h1>
-    <a class="bg-white hover:bg-dc2 transition transition-colors duration-500 px-2 border border-white rounded flex items-center">Log in</a>
-  </header>
-  <main class="px-8 py-2 flex-grow">
-{% endblock %}
+  <div class="bg-gray-200 text-grey-700 min-h-screen flex flex-col justify-between">
+    <header class="bg-brand px-8 py-2 flex justify-between">
+      <h1 class="font-logo text-white text-2xl capitalize">TASTINE</h1>
+      <a class="bg-white hover:bg-dc2 transition transition-colors duration-500 px-2 border border-white rounded flex items-center" href="/login">Log in</a>
+    </header>
+    <main class="px-8 py-2 flex-grow">
+    {% endblock %}
 
-{% block main %}
-  {#
+    {% block main %}
+      {#
     Usually, your page templates in the @apostrophecms/pages module will override
     this block. It is safe to assume this is where your page-specific content
     should go.
   #}
-{% endblock %}
+    {% endblock %}
 
-{% block afterMain %}
-  </main>
-  <footer class="bg-grey-700 text-white px-8 py-2">
+    {% block afterMain %}
+    </main>
+    <aside id="shopping-list" class="fixed top-1/4 right-0 transform transition-transform duration-500 border-gray-500 border bg-white w-96 rounded-l-xl h-1/2 flex items-center z-10 font-mono">
+      <div
+        class="absolute -left-6 w-12 pl-2 py-2 border border-gray-500 rounded-full z-0 cursor-pointer bg-yellow-100"
+        id="toggle-shopping-list"
+      >
+        <p>
+          <span
+            class="transform transition-transform origin-center inline-block shopping-list-arrow"
+          >
+            ►
+          </span>
+        </p>
+        <p>
+          <span
+            class="transform transition-transform origin-center inline-block shopping-list-arrow"
+          >
+            ►
+          </span>
+        </p>
+        <p>
+          <span
+            class="transform transition-transform origin-center inline-block shopping-list-arrow"
+          >
+            ►
+          </span>
+        </p>
+      </div>
+      <div class="absolute h-full w-full p-4 pb-8 bg-yellow-100 rounded-2xl">
+        <h2 class="text-xl">Ingredients To Buy</h2>
+        <div class="flex flex-col h-full w-full overflow-auto py-2"> <ul id="ingredients-to-buy" class="w-full"></ul>
+        </div>
+        <button id="add-sample" class="p-4 bg-brand text-white">Add Sample</button>
+        <button id="clear-shopping-list" class="p-4 my-2 bg-brand text-white">Clear</button>
+      </div>
+    </aside>
+    <footer class="bg-grey-700 text-white px-8 py-2">
   Footer
   </footer>
-</div>{# Close .bp-wrapper #}
+  </div>
+  {# Close .bp-wrapper #}
 {% endblock %}

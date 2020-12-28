@@ -25,9 +25,20 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
+          'resolve-url-loader',
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }
       }
     ]
   }

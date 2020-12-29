@@ -22,7 +22,11 @@
   <div class="bg-gray-200 text-grey-700 min-h-screen flex flex-col justify-between">
     <header class="bg-brand px-8 py-2 flex justify-between items-center">
       <h1 class="font-logo text-white text-6xl capitalize">TASTINE</h1>
+      {% if not data.user %}
       <a class="bg-white h-full hover:bg-dc2 transition transition-colors duration-500 py-2 px-2 border border-white rounded" href="/login">Log in</a>
+      {% else %}
+        <span class="text-white capitalize">Hi {{data.user.username}}!</span>
+      {% endif %}
     </header>
     <main class="px-8 py-2 flex-grow">
     {% endblock %}

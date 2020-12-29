@@ -5,7 +5,7 @@
 
 {% block main %}
 <h2 class="text-5xl my-4">Recipes</h2>
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-3 gap-4" data-recipes-loaded="true">
   {% for recipe in data.pieces %}
   <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
    {% set attachment = apos

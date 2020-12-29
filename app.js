@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 
 require('apostrophe')({
@@ -15,6 +17,26 @@ require('apostrophe')({
 
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
+
+    '@apostrophecms/db': {
+      options: {
+        uri: process.env.MONGO_URI
+      }
+    },
+
+    '@apostrophecms/attachment': {
+      options: {
+        uploadfs: {
+          backend: 's3',
+          secret: process.env.S3_SECRET,
+          key: process.env.S3_KEY,
+          bucket: process.env.S3_BUCKET,
+          region: process.env.S3_REGION,
+          endpoint: process.env.S3_ENDPOINT,
+          style: 'path'
+        }
+      }
+    },
 
     '@apostrophecms/template': {
       options: {
@@ -38,7 +60,7 @@ require('apostrophe')({
       options: {
         session: {
           // If this still says `undefined`, set a real secret!
-          secret: 'Contrast-Image-Thus-Original-2016'
+          secret: process.env.EXPRESS_SECRET || 'WellABadSecretIsBetterThanNoSecretSurely?!'
         }
       }
     },

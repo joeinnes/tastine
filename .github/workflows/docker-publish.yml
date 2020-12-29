@@ -74,3 +74,5 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          
+          docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl ${{ secrets.CAPROVER_URL }} --caproverPassword ${{ secrets.CAPROVER_PASSWORD }} --caproverApp ${{ secrets.CAPROVER_APP }} --imageName $IMAGE_ID:$VERSION

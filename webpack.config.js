@@ -6,6 +6,7 @@ module.exports = {
     path: path.resolve(__dirname, 'modules/asset/ui/public'),
     filename: 'site.js'
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {

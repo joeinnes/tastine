@@ -13,7 +13,7 @@ const entry = glob.sync('modules/*/src/index.js').reduce((acc, curr) => {
 {});
 
 entry['modules/asset/ui/public/site.js'] = './src/index.js';
-console.log(`Webpack running in ${process.env.NODE_ENV} mode`);
+console.log(`Webpack running in ${process.env.NODE_ENV || 'development'} mode`);
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',

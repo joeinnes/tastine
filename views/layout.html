@@ -19,13 +19,18 @@
 {% endblock %}
 
 {% block beforeMain %}
-  <div class="bg-gray-200 text-grey-700 min-h-screen flex flex-col justify-between">
-    <header class="bg-brand px-8 py-2 flex justify-between items-center">
-      <h1 class="font-logo text-white text-6xl capitalize">TASTINE</h1>
+  <div class="bg-gray-100 text-grey-700 min-h-screen flex flex-col justify-between">
+    <header class="border-t-4 border-b-2 border-brand bg-white px-8 py-2 flex justify-between items-center">
+      <a href="/">
+        <h1 class="font-logo text-6xl capitalize shadow-none my-0">TASTINE</h1>
+      </a>
+      <form method="GET" action="/search" class="flex-grow flex px-16">
+        <input type="text" name="q" class="border-gray-700 border border-r-0 rounded-l-lg p-2 flex-grow focus:outline-none focus:ring-brand"/><input type="submit" value="Search" class="py-2 px-4 bg-brand text-white rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-opacity-75"/>
+      </form>
       {% if not data.user %}
-      <a class="bg-white h-full hover:bg-dc2 transition transition-colors duration-500 py-2 px-2 border border-white rounded" href="/login">Log in</a>
+        <a class="btn-brand" href="/login">Log in</a>
       {% else %}
-        <span class="text-white capitalize">Hi {{data.user.username}}!</span>
+        <span class="capitalize">Hi {{data.user.username}}!</span>
       {% endif %}
     </header>
     <main class="px-8 py-2 flex-grow">
@@ -41,48 +46,52 @@
 
     {% block afterMain %}
     </main>
-    <aside id="shopping-list" class="fixed top-1/4 right-0 transform transition-transform duration-500 border-gray-500 border bg-white w-96 rounded-l-xl h-1/2 flex items-center z-10 font-mono">
+    <aside id="shopping-list" class="fixed top-1/4 right-0 transform transition-transform duration-500 border-l-4 border-brand bg-white w-96 rounded-l-xl h-1/2 flex items-center z-10 font-mono">
       <div
-        class="absolute -left-6 w-12 pl-2 py-2 border border-gray-500 rounded-full z-0 cursor-pointer bg-yellow-100"
+        class="absolute -left-7 w-14 pl-2 py-2 text-yellow-100 rounded-full z-0 cursor-pointer bg-brand"
         id="toggle-shopping-list"
       >
         <p>
           <span
             class="transform transition-transform origin-center inline-block shopping-list-arrow"
           >
-            ►
+            ⮕
           </span>
         </p>
         <p>
           <span
             class="transform transition-transform origin-center inline-block shopping-list-arrow"
           >
-            ►
+            ⮕
           </span>
         </p>
         <p>
           <span
             class="transform transition-transform origin-center inline-block shopping-list-arrow"
           >
-            ►
+            ⮕
           </span>
         </p>
       </div>
       <div class="absolute h-full w-full p-4 pb-8 bg-yellow-100 rounded-2xl">
-        
-        <div class="flex w-full items-center">
-          <h2 class="text-xl flex-grow">Ingredients To Buy</h2>
-          <button id="clear-shopping-list" class="py-1 px-2 bg-brand text-white flex-grow-0">Clear</button>
+
+        <div class="flex w-full items-center justify-between">
+          <h2 class="text-xl">Ingredients To Buy</h2>
+
+          <button id="clear-shopping-list" class="btn-brand flex-grow-0">Clear</button>
         </div>
-        <div class="flex flex-col h-full w-full overflow-auto py-2"> 
+        <div class="flex flex-col h-full w-full overflow-auto py-2">
           <ul id="ingredients-to-buy" class="w-full"></ul>
-          
+
         </div>
       </div>
     </aside>
-    <footer class="bg-grey-700 text-white px-8 py-2">
-  Footer
-  </footer>
+    <footer class="bg-grey-700 text-white px-8 py-2 flex">
+      <div>
+      Created in 2020 by <a href="https://joeinn.es" target="_blank">Joe Innes</a> of <a href="https://traist.co.uk">Traist Web Services</a>.
+    </div>
+      <div></div>
+    </footer>
   </div>
   {# Close .bp-wrapper #}
 {% endblock %}

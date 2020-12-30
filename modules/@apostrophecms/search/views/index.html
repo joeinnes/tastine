@@ -1,0 +1,30 @@
+{% import '@apostrophecms/pager:macros.html' as pager with context %}
+{% extends "layout.html" %}
+
+<!-- fields: [ 'title', '_featuredPhoto', 'method', 'ingredients' ] -->
+
+{% block main %}
+  <div class="my-4">
+    <h2 class="text-5xl inline">Search Results for "{{ data.query.q }}"</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mb-4">
+    {% for recipe in data.docs %}
+      <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
+        {% set attachment = apos
+          .image
+          .first(recipe._featuredPhoto) %}
+
+        <div class="w-1/3 bg-cover h-full rounded-l-lg bg-center" style="background-image: url('{{ apos.attachment.url(attachment, { size: data.options.size or 'full' }) }}')"></div>
+        <div class="flex items-center w-2/3 p-4 border-l-4 border-brand">
+          <div class="flex-grow">
+            <h2 class="text-2xl inline">
+              <a href="{{ recipe._url }}">{{ recipe.title }}</a>
+            </h2>
+          </div>
+          <button class="btn-brand add-ingredients-to-shopping-list" data-recipe="{{recipe._id}}">Add to shopping list</button>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}

@@ -6,7 +6,7 @@ console.log(`Apostrophe running in ${process.env.NODE_ENV || 'development'} mode
 
 require('apostrophe')({
   shortName: 'tastine',
-
+  baseUrl: process.env.BASE_URL || 'http://localhost:3000',
   modules: {
 
     // Apostrophe module configuration
@@ -35,7 +35,7 @@ require('apostrophe')({
           bucket: process.env.S3_BUCKET,
           region: process.env.S3_REGION,
           endpoint: process.env.S3_ENDPOINT,
-          secure: true,
+          https: true,
           style: 'path'
         }
       }
@@ -66,6 +66,12 @@ require('apostrophe')({
           // If this still says `undefined`, set a real secret!
           secret: process.env.EXPRESS_SECRET || 'WellABadSecretIsBetterThanNoSecretSurely?!'
         }
+      }
+    },
+
+    '@apostrophecms/search': {
+      options: {
+        types: [ 'recipe' ]
       }
     },
 

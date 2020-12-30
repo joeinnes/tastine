@@ -16,6 +16,16 @@ module.exports = {
         name: 'recipe-page',
         label: 'Recipes'
       }
+    ],
+    park: [
+      {
+        title: 'Search',
+        slug: '/search',
+        type: '@apostrophecms/search',
+        label: 'Search',
+        parkedId: 'search',
+        published: true
+      }
     ]
   }
 };

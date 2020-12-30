@@ -1,6 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import ShoppingList from './lib/shoppingList.js';
 
 try {

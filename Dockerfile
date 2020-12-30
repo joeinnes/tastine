@@ -7,6 +7,7 @@ WORKDIR /app
 # Bundle app source
 COPY . /app
 RUN npm install
+ENV NODE_ENV=production
 RUN npm run build
 
 # Add the environment variable

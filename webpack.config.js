@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const glob = require('glob');
 
@@ -12,8 +13,10 @@ const entry = glob.sync('modules/*/src/index.js').reduce((acc, curr) => {
 {});
 
 entry['modules/asset/ui/public/site.js'] = './src/index.js';
+console.log(`Webpack running in ${process.env.NODE_ENV} mode`);
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry,
   output: {
     path: __dirname,
@@ -28,7 +31,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [ '@babel/preset-env' ]
+              presets: [ '@babel/preset-env' ],
+              plugins: [ '@babel/plugin-transform-runtime' ]
             }
           }
         ]

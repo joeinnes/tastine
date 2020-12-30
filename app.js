@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const path = require('path');
 
+console.log(`Apostrophe running in ${process.env.NODE_ENV} mode`);
+
 require('apostrophe')({
   shortName: 'tastine',
 
@@ -33,6 +35,7 @@ require('apostrophe')({
           bucket: process.env.S3_BUCKET,
           region: process.env.S3_REGION,
           endpoint: process.env.S3_ENDPOINT,
+          protocol: 'secure',
           style: 'path'
         }
       }
@@ -52,8 +55,8 @@ require('apostrophe')({
     '@apostrophecms/asset': {
       // When not in production, refresh the page on restart
       options: {
-        refreshOnRestart: (process.env.ENV !== 'prod'),
-        minify: (process.env.ENV === 'prod')
+        refreshOnRestart: (process.env.NODE_ENV !== 'production'),
+        minify: true// (process.env.NODE_ENV === 'production')
       }
     },
 

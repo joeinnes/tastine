@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const path = require('path');
 
-console.log(`Apostrophe running in ${process.env.NODE_ENV} mode`);
+console.log(`Apostrophe running in ${process.env.NODE_ENV || 'development'} mode`);
 
 require('apostrophe')({
   shortName: 'tastine',
@@ -35,7 +35,7 @@ require('apostrophe')({
           bucket: process.env.S3_BUCKET,
           region: process.env.S3_REGION,
           endpoint: process.env.S3_ENDPOINT,
-          protocol: 'secure',
+          https: true,
           style: 'path'
         }
       }

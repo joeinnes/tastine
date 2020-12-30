@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apostrophecms/a3-boilerplate"
+    "url": "https://github.com/joeinnes/tastine"
   },
-  "author": "Apostrophe Technologies, Inc.",
+  "author": "Joe Innes",
   "license": "MIT",
   "dependencies": {
     "@tailwindcss/typography": "^0.3.1",

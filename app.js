@@ -52,7 +52,8 @@ require('apostrophe')({
     '@apostrophecms/asset': {
       // When not in production, refresh the page on restart
       options: {
-        refreshOnRestart: true
+        refreshOnRestart: (process.env.ENV !== 'prod'),
+        minify: (process.env.ENV === 'prod')
       }
     },
 

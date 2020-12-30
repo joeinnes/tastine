@@ -7,6 +7,7 @@ WORKDIR /app
 # Bundle app source
 COPY . /app
 RUN npm install
+RUN npm run build
 
 # Add the environment variable
 # to copy files rather than use symlinks

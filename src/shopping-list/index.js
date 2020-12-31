@@ -65,9 +65,9 @@ try {
       const ingredientItem = document.createTextNode(item.name);
       itemText.appendChild(ingredientItem);
 
-      listItem.classList.add('flex', 'w-full', 'my-1');
+      listItem.classList.add('flex', 'w-full', 'my-1', 'items-center');
       checkbox.type = 'checkbox';
-      checkbox.classList.add('mr-2', 'flex-grow-0');
+      checkbox.classList.add('flex-grow-0');
       listItem.appendChild(checkbox);
       listItem.appendChild(itemText);
       listItem.appendChild(quantityControls);

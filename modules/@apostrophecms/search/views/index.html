@@ -8,6 +8,9 @@
     <h2 class="text-5xl inline">Search Results for "{{ data.query.q }}"</h2>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mb-4">
+    {% if not data.docs %}
+      <p>No results found.</p>
+    {%$ endif %}
     {% for recipe in data.docs %}
       <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
         {% set attachment = apos
@@ -16,7 +19,7 @@
 
         <div class="w-1/3 bg-cover h-full rounded-l-lg bg-center" style="background-image: url('{{ apos.attachment.url(attachment, { size: data.options.size or 'full' }) }}')"></div>
         <div class="flex items-center w-2/3 p-4 border-l-4 border-brand">
-          <div class="flex-grow">
+          <div class="flex-grow mr-2">
             <h2 class="text-2xl inline">
               <a href="{{ recipe._url }}">{{ recipe.title }}</a>
             </h2>

@@ -25,7 +25,7 @@
         <h1 class="font-logo text-6xl capitalize shadow-none my-0">TASTINE</h1>
       </a>
       <form method="GET" action="/search" class="flex-grow flex px-16">
-        <input type="text" name="q" class="border-gray-700 border border-r-0 rounded-l-lg p-2 flex-grow focus:outline-none focus:ring-brand"/><input type="submit" value="Search" class="py-2 px-4 bg-brand text-white rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-opacity-75"/>
+        <input type="text" name="q" class="border-brand border border-r-0 rounded-l-lg p-2 flex-grow focus:outline-none focus:ring-brand"/><input type="submit" value="Search" class="py-2 px-4 border-brand border bg-brand text-white rounded-r-lg shadow-md focus:outline-none focus:ring-2 focus:ring-brand focus:ring-opacity-75"/>
       </form>
       {% if not data.user %}
         <a class="btn-brand" href="/login">Log in</a>
@@ -46,7 +46,7 @@
 
     {% block afterMain %}
     </main>
-    <aside id="shopping-list" class="fixed top-1/4 right-0 transform transition-transform duration-500 border-l-4 border-brand bg-white w-96 rounded-l-xl h-1/2 flex items-center z-10 font-mono">
+    <aside id="shopping-list" class="fixed top-1/4 right-0 transform transition-transform duration-500 border-l-4 border-brand bg-yellow-100 w-96 rounded-l-xl h-1/2 flex items-center z-10 font-mono">
       <div
         class="absolute -left-7 w-14 pl-2 py-2 text-yellow-100 rounded-full z-0 cursor-pointer bg-brand"
         id="toggle-shopping-list"
@@ -73,7 +73,7 @@
           </span>
         </p>
       </div>
-      <div class="absolute h-full w-full p-4 pb-8 bg-yellow-100 rounded-2xl">
+      <div class="absolute h-full w-full p-4 pb-8">
 
         <div class="flex w-full items-center justify-between">
           <h2 class="text-xl">Ingredients To Buy</h2>

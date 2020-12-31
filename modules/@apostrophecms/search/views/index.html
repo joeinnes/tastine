@@ -1,16 +1,15 @@
 {% import '@apostrophecms/pager:macros.html' as pager with context %}
 {% extends "layout.html" %}
 
-<!-- fields: [ 'title', '_featuredPhoto', 'method', 'ingredients' ] -->
-
 {% block main %}
   <div class="my-4">
     <h2 class="text-5xl inline">Search Results for "{{ data.query.q }}"</h2>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mb-4">
-    {% if not data.docs %}
+    {% if not data.totalDocs %}
       <p>No results found.</p>
-    {%$ endif %}
+    {% endif %}
+
     {% for recipe in data.docs %}
       <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
         {% set attachment = apos

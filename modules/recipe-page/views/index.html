@@ -9,39 +9,46 @@
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mb-4">
     {% for recipe in data.pieces %}
-      <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
-        {% set attachment = apos
-          .image
-          .first(recipe._featuredPhoto) %}
+      <a href="{{ recipe._url }}">
+        <article class="bg-white w-full h-full rounded-lg shadow-lg flex relative">
+          {% set attachment = apos
+            .image
+            .first(recipe._featuredPhoto) %}
 
-        <div class="w-1/2 bg-cover h-full rounded-l-lg bg-center" style="background-image: url('{{ apos.attachment.url(attachment, { size: data.options.size or 'full' }) }}')"></div>
-        <div class="w-1/2 p-4 pt-2 border-l-4 border-brand">
-          <div class="mb-2">
-            <h2 class="text-3xl inline">
-              <a href="{{ recipe._url }}">{{ recipe.title }}</a>
-            </h2>
-          </div>
-          <div class="mb-2">
-            <h3 class="text-xl inline">Ingredients</h3>
-          </div>
-          <ul class="mb-2">
+          <div class="w-1/2 bg-cover h-full rounded-l-lg bg-center" style="background-image: url('{{ apos.attachment.url(attachment, { size: data.options.size or 'full' }) }}')"></div>
+          <div class="w-1/2 p-4 pt-2 border-l-4 border-brand">
+            <div class="mb-2">
+              <h2 class="text-3xl inline">
+                {{ recipe.title }}
+              </h2>
+            </div>
+            <div class="mb-2">
+              <h3 class="text-xl inline">Ingredients</h3>
+            </div>
+            <ul class="mb-2 line-clamp line-clamp-5">
+              {% set length = ingredients.length if ingredients.length < 5 else 
+                5 %}
+              {% for i in range(0, length) %}
+                <li>{{recipe.ingredients[i].quantity}}
+                  {{recipe.ingredients[i]._ingredient[0].quantityUnit | lower}} of {{recipe.ingredients[i]._ingredient[0].title | lower}}</li>
+              {% endfor %}
+              {% if recipe.ingredients.length > 4 %}
+                <li>...</li>
+              {% endif %}
+            </ul>
+            <div class="mb-2">
+              <h3 class="text-xl inline">Method</h3>
+            </div>
+            <section class="mb-2 line-clamp line-clamp-3">{% area recipe,
+              'method' %}</section>
             {% for ingredient in recipe.ingredients %}
-              <li>{{ingredient.quantity}}
-                {{ingredient._ingredient[0].quantityUnit | lower}} of {{ingredient._ingredient[0].title | lower}}</li>
+              <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}" name="name" value="{{ingredient._ingredient[0].title}}">
+              <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}"  name="quantity" value="{{ingredient.quantity}}"/>
             {% endfor %}
-          </ul>
-          <div class="mb-2">
-            <h3 class="text-xl inline">Method</h3>
+            <button class="btn-brand add-ingredients-to-shopping-list" data-recipe="{{recipe._id}}">Add to shopping list</button>
           </div>
-          <section class="mb-2">{% area recipe,
-            'method' %}</section>
-          {% for ingredient in recipe.ingredients %}
-            <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}" name="name" value="{{ingredient._ingredient[0].title}}">
-            <input type="hidden" data-recipe="{{recipe._id}}" data-ingredient="{{ingredient._id}}"  name="quantity" value="{{ingredient.quantity}}"/>
-          {% endfor %}
-          <button class="btn-brand add-ingredients-to-shopping-list" data-recipe="{{recipe._id}}">Add to shopping list</button>
-        </div>
-      </article>
+        </article>
+      </a>
     {% endfor %}
   </div>
   {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
